@@ -44,7 +44,7 @@ public class ActitimeStepDefinitions extends TestBase {
 	public void user_should_be_able_to_successfuly_loging_to_Actitime() throws Throwable {
 	    
 		homePage.validateActiTimeLogo();
-		//driver.quit();
+		driver.quit();
 		
 	}
 }

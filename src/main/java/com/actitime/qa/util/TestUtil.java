@@ -18,13 +18,18 @@ import org.openqa.selenium.TakesScreenshot;
 
 import com.actitime.qa.base.TestBase;
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class TestUtil extends TestBase {
 
 	public static long PAGE_LOAD_TIMEOUT =40;
 	public static long IMPLICIT_WAIT = 40;
 	
-	
+	public TestUtil(){
+		//set dynamic page load time and  wait time depends on the browser
+		setDynamicBrowserLoadingTime();
+	}
+
 	public void swithToFrame(String framaName) {
 		
 		driver.switchTo().frame(framaName);
@@ -76,5 +81,27 @@ public class TestUtil extends TestBase {
 		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		String currentDir = System.getProperty("user.dir");
 		FileUtils.copyFile(scrFile, new File(currentDir + "/screenshots/" + System.currentTimeMillis() + ".png"));
+	}
+
+	//method to set dynamic page load and wait times
+	public void setDynamicBrowserLoadingTime(){
+
+		//get the user browser name
+		String userBroswer = ((RemoteWebDriver) driver)
+				.getCapabilities()
+				.getBrowserName();
+
+		//if it is chrrome
+		if (userBroswer=="chrome"){
+			PAGE_LOAD_TIMEOUT = 50;
+			IMPLICIT_WAIT = 52;
+		}//if it is firefix
+		else if (userBroswer=="firefox"){
+			PAGE_LOAD_TIMEOUT = 55;
+			IMPLICIT_WAIT = 58;
+		}
+
+		//likewise we can add more browsers with different times
+
 	}
 }

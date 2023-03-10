@@ -1,4 +1,4 @@
-/*package com.actitime.qa.testcases;
+package com.actitime.qa.testcases;
 
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -65,4 +65,4 @@ public class LogonPageTest extends TestBase{
 		
 		driver.quit();
 	}
-}*/
+}

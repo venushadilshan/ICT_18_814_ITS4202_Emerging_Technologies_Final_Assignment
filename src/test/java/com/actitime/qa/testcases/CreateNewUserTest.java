@@ -12,13 +12,13 @@ import org.testng.annotations.*;
 import java.io.IOException;
 
 
-public class CreateUserTest extends TestBase {
+public class CreateNewUserTest extends TestBase {
 
     LoginPage loginPage;
     HomePage homePage;
     UsersPage usersPage;
 
-    public CreateUserTest() {
+    public CreateNewUserTest() {
         super();
     }
 
