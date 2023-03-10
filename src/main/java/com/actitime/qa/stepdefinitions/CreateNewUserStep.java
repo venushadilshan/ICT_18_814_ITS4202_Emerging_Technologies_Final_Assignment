@@ -8,7 +8,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class CreateUserStepDefinitions extends TestBase {
+public class CreateNewUserStep extends TestBase {
     UsersPage usersPage;
     HomePage homePage;
     String sheetName = "Users";
