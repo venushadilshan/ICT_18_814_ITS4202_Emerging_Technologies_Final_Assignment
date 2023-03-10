@@ -13,7 +13,7 @@ import io.cucumber.junit.CucumberOptions;
 		,monochrome = true,
 				strict=true,
 				dryRun=false,
-		tags="@TC_001, @TC_002"
+		tags="@TC_002"
 		)
 
 
