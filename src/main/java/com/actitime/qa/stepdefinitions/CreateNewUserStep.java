@@ -1,9 +1,9 @@
 package com.actitime.qa.stepdefinitions;
 
 import com.actitime.qa.base.TestBase;
+import com.actitime.qa.entities.UserData;
 import com.actitime.qa.pages.HomePage;
 import com.actitime.qa.pages.UsersPage;
-import com.actitime.qa.util.TestUtil;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -11,17 +11,12 @@ import io.cucumber.java.en.When;
 public class CreateNewUserStep extends TestBase {
     UsersPage usersPage;
     HomePage homePage;
-    String sheetName = "Users";
-    TestUtil testUtil;
+
 
 
     @Given("^User in the Actitime home page$")
     public void user_in_the_Actitime_Users_Page() throws Throwable {
-
-       // initialization();
-        //usersPage = new UsersPage();
-       // homePage = new HomePage();
-
+       initialization();
     }
 
     @When("^User click on users tab$")
@@ -36,8 +31,8 @@ public class CreateNewUserStep extends TestBase {
     }
 
     @Then("^user fill in user data$")
-    public void user_fill_in_user_data() throws Throwable {
-        //usersPage.fillUserData("venusha", "dilshan", "test@test.com");
+    public void user_fill_in_user_data(UserData userData) throws Throwable {
+        usersPage.fillUserData(userData);
     }
 
     @Then("^user click on submit$")
@@ -48,7 +43,7 @@ public class CreateNewUserStep extends TestBase {
     @Then("^user should be added successfully$")
     public void user_should_be_added_successfully() throws Throwable {
         homePage.validateActiTimeLogo();
-     //   driver.quit();
+        driver.quit();
     }
 
 

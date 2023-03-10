@@ -10,8 +10,9 @@
 
    <test name = "UCSC Test Automation Demo Testcases">
       <classes>
-         <class name = "com.actitime.qa.testcases.HomePageTest" />
-         <class name = "com.actitime.qa.testcases.LogonPageTest" />
+          <class name = "com.actitime.qa.testcases.CreateUserTest" />
+<!--         <class name = "com.actitime.qa.testcases.HomePageTest" />-->
+<!--         <class name = "com.actitime.qa.testcases.LogonPageTest" />-->
       </classes>
    </test>
 

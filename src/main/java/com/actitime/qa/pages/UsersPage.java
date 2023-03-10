@@ -13,6 +13,8 @@ public class UsersPage extends TestBase  {
     @FindBy(xpath = "//div[text()='New User']")
     private WebElement newUserButton;
 
+
+    //create user input fields
     @FindBy(xpath = "//input[@id='createUserPanel_firstNameField']")
     private WebElement firstNameInput;
 
@@ -22,25 +24,21 @@ public class UsersPage extends TestBase  {
     @FindBy(xpath = "//input[@id='createUserPanel_emailField']")
     private WebElement emailInput;
 
+
+    //submit button
     @FindBy(xpath = "//div[text()='Save & Send Invitation']")
     private WebElement submitButton;
 
-
+    //close side panel button
     @FindBy(xpath = "//span[text()='Close']")
     private WebElement closeLink;
-
-
-
-
-
 
     public UsersPage() {
         PageFactory.initElements(driver, this);
     }
 
-
+    //click on create new user button
     public void clickOnNewUserButton() {
-
         newUserButton.click();
         WebDriverWait wait = new WebDriverWait(driver, 15);
         firstNameInput = wait.until(ExpectedConditions.elementToBeClickable(firstNameInput));
@@ -48,36 +46,24 @@ public class UsersPage extends TestBase  {
         emailInput = wait.until(ExpectedConditions.elementToBeClickable(emailInput));
     }
 
-
+    //fill put user data to input fields
     public void fillUserData (UserData userData){
-
-
         firstNameInput.sendKeys(userData.getfName());
         secondNameInput.sendKeys(userData.getlName());
         emailInput.sendKeys(userData.getEmail());
-        //test
-
-
-
     }
 
+    //click on save and send invitation button
     public void clickSubmitButton()
     {
-       // WebDriverWait wait = new WebDriverWait(driver, 20); // wait for up to 10 seconds
-      //  WebElement saveButton = wait.until(ExpectedConditions.elementToBeClickable(submitButton));
-        //saveButton.click();
         submitButton.click();
-        WebDriverWait wait = new WebDriverWait(driver, 20); // wait for up to 10 seconds
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         closeLink = wait.until(ExpectedConditions.elementToBeClickable(closeLink));
-
     }
 
     public void closeModal()
     {
-
-        //saveButton.click();
         closeLink.click();
-
     }
 
 

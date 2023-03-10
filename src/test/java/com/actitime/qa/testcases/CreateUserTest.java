@@ -7,11 +7,6 @@ import com.actitime.qa.pages.LoginPage;
 import com.actitime.qa.pages.UsersPage;
 import com.actitime.qa.util.ReadUserDataUtil;
 import com.opencsv.exceptions.CsvValidationException;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.io.IOException;
@@ -36,55 +31,36 @@ public class CreateUserTest extends TestBase {
         usersPage = homePage.clickOnUsersLink();
     }
 
-
+    //click on new create new user tab
     @Test(priority = 1)
     public void clickOnNewUserButton() {
         this.usersPage.clickOnNewUserButton();
     }
 
-   /* @Test(priority = 2)
-    public void fillUserData() throws InterruptedException {
-        this.usersPage.clickOnNewUserButton();
-        WebDriverWait wait = new WebDriverWait(driver, 15); // wait for up to 10 seconds
-        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='createUserPanel_firstNameField']")));
-
-        element.sendKeys("lalala lalala");
-    }*/
-
-
+    //insert user data by reading the csv file
     @Test(priority = 2)
     public void InsertUserData() throws CsvValidationException, IOException {
-        //this.usersPage.clickOnNewUserButton();
-      //  usersPage.fillUserData();
-
-        UserData userData =  ReadUserDataUtil.getUserData();
+        UserData userData = ReadUserDataUtil.getUserData();
         usersPage.fillUserData(userData);
-      // usersPage.clickSubmitButton();
-       //usersPage.closeModal();
 
     }
-
+    //click on save and send invitation button
     @Test(priority = 3, dependsOnMethods = {"InsertUserData"})
     public void saveUser() {
         this.usersPage.clickSubmitButton();
-       // usersPage.closeModal();
-
 
     }
 
+    //close the side panel
     @Test(priority = 4, dependsOnMethods = {"saveUser"})
     public void closePanel() {
         this.usersPage.closeModal();
-        // usersPage.closeModal();
-
 
     }
 
-
     @AfterClass
     public void tearDown() {
-
-   driver.quit();
+        driver.quit();
     }
 
 
