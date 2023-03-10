@@ -37,7 +37,7 @@ public class CreateUserStepDefinitions extends TestBase {
 
     @Then("^user fill in user data$")
     public void user_fill_in_user_data() throws Throwable {
-        usersPage.fillUserData("venusha", "dilshan", "test@test.com");
+        //usersPage.fillUserData("venusha", "dilshan", "test@test.com");
     }
 
     @Then("^user click on submit$")

@@ -1,6 +1,7 @@
 package com.actitime.qa.pages;
 
 import com.actitime.qa.base.TestBase;
+import com.actitime.qa.entities.UserData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -48,12 +49,12 @@ public class UsersPage extends TestBase  {
     }
 
 
-    public void fillUserData (String fName, String lName, String email){
+    public void fillUserData (UserData userData){
 
 
-        firstNameInput.sendKeys(fName);
-        secondNameInput.sendKeys(lName);
-        emailInput.sendKeys(email);
+        firstNameInput.sendKeys(userData.getfName());
+        secondNameInput.sendKeys(userData.getlName());
+        emailInput.sendKeys(userData.getEmail());
         //test
 
 

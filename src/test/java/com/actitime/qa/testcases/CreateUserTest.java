@@ -1,15 +1,21 @@
 package com.actitime.qa.testcases;
 
 import com.actitime.qa.base.TestBase;
+import com.actitime.qa.entities.UserData;
 import com.actitime.qa.pages.HomePage;
 import com.actitime.qa.pages.LoginPage;
 import com.actitime.qa.pages.UsersPage;
+import com.actitime.qa.util.ReadUserDataUtil;
+import com.opencsv.exceptions.CsvValidationException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
+
+import java.io.IOException;
+
 
 public class CreateUserTest extends TestBase {
 
@@ -47,9 +53,12 @@ public class CreateUserTest extends TestBase {
 
 
     @Test(priority = 2)
-    public void InsertUserData() {
+    public void InsertUserData() throws CsvValidationException, IOException {
         //this.usersPage.clickOnNewUserButton();
-        usersPage.fillUserData("venusha", "test", "test@test.com");
+      //  usersPage.fillUserData();
+
+        UserData userData =  ReadUserDataUtil.getUserData();
+        usersPage.fillUserData(userData);
       // usersPage.clickSubmitButton();
        //usersPage.closeModal();
 
