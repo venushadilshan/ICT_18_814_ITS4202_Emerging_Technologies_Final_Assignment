@@ -12,8 +12,8 @@ import io.cucumber.junit.CucumberOptions;
 		,glue={"com/actitime/qa/stepdefinitions"}
 		,monochrome = true,
 				strict=true,
-				dryRun=false,
-		tags="@TC_002"
+				dryRun=false
+
 		)
 
 

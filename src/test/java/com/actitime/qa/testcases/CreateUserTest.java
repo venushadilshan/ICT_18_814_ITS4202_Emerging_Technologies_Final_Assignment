@@ -9,9 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 public class CreateUserTest extends TestBase {
 
@@ -24,7 +22,7 @@ public class CreateUserTest extends TestBase {
     }
 
 
-    @BeforeMethod
+    @BeforeSuite
     public void setup() {
         initialization();
         loginPage = new LoginPage();
@@ -49,27 +47,35 @@ public class CreateUserTest extends TestBase {
 
 
     @Test(priority = 2)
-    public void InsertUserData() throws InterruptedException {
-        this.usersPage.clickOnNewUserButton();
+    public void InsertUserData() {
+        //this.usersPage.clickOnNewUserButton();
         usersPage.fillUserData("venusha", "test", "test@test.com");
-       usersPage.clickSubmitButton();
-       usersPage.closeModal();
+      // usersPage.clickSubmitButton();
+       //usersPage.closeModal();
 
     }
-/*
 
-    @Test(priority = 3)
-    public void saveUser() throws InterruptedException {
+    @Test(priority = 3, dependsOnMethods = {"InsertUserData"})
+    public void saveUser() {
         this.usersPage.clickSubmitButton();
+       // usersPage.closeModal();
 
 
     }
-*/
 
-    @AfterMethod
+    @Test(priority = 4, dependsOnMethods = {"saveUser"})
+    public void closePanel() {
+        this.usersPage.closeModal();
+        // usersPage.closeModal();
+
+
+    }
+
+
+    @AfterClass
     public void tearDown() {
 
-   //driver.quit();
+   driver.quit();
     }
 
 

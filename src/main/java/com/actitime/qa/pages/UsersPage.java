@@ -41,18 +41,19 @@ public class UsersPage extends TestBase  {
     public void clickOnNewUserButton() {
 
         newUserButton.click();
+        WebDriverWait wait = new WebDriverWait(driver, 15);
+        firstNameInput = wait.until(ExpectedConditions.elementToBeClickable(firstNameInput));
+        secondNameInput = wait.until(ExpectedConditions.elementToBeClickable(secondNameInput));
+        emailInput = wait.until(ExpectedConditions.elementToBeClickable(emailInput));
     }
 
 
     public void fillUserData (String fName, String lName, String email){
 
-        WebDriverWait wait = new WebDriverWait(driver, 15);
-        WebElement fNameTextBox = wait.until(ExpectedConditions.elementToBeClickable(firstNameInput));
-        WebElement sNameTexBox = wait.until(ExpectedConditions.elementToBeClickable(secondNameInput));
-        WebElement emailTexBox = wait.until(ExpectedConditions.elementToBeClickable(emailInput));
-        fNameTextBox.sendKeys(fName);
-        sNameTexBox.sendKeys(lName);
-        emailTexBox.sendKeys(email);
+
+        firstNameInput.sendKeys(fName);
+        secondNameInput.sendKeys(lName);
+        emailInput.sendKeys(email);
         //test
 
 
@@ -65,15 +66,16 @@ public class UsersPage extends TestBase  {
       //  WebElement saveButton = wait.until(ExpectedConditions.elementToBeClickable(submitButton));
         //saveButton.click();
         submitButton.click();
+        WebDriverWait wait = new WebDriverWait(driver, 20); // wait for up to 10 seconds
+        closeLink = wait.until(ExpectedConditions.elementToBeClickable(closeLink));
 
     }
 
     public void closeModal()
     {
-        WebDriverWait wait = new WebDriverWait(driver, 20); // wait for up to 10 seconds
-          WebElement closeLinkButton = wait.until(ExpectedConditions.elementToBeClickable(closeLink));
+
         //saveButton.click();
-        closeLinkButton.click();
+        closeLink.click();
 
     }
 
