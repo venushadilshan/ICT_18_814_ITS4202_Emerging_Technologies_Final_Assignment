@@ -40,6 +40,7 @@ public class CreateNewUserStep extends TestBase {
         usersPage.clickSubmitButton();
     }
 
+    //close the model once user is added
     @Then("^user should be added successfully$")
     public void user_should_be_added_successfully() throws Throwable {
         usersPage.closeModal();
