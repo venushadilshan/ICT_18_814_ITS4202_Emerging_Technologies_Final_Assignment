@@ -42,7 +42,7 @@ public class CreateNewUserStep extends TestBase {
 
     @Then("^user should be added successfully$")
     public void user_should_be_added_successfully() throws Throwable {
-        homePage.validateActiTimeLogo();
+        usersPage.closeModal();
         driver.quit();
     }
 
